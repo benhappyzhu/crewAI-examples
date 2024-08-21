@@ -8,6 +8,7 @@ from tools.sec_tools import SECTools
 from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
 
 class StockAnalysisAgents():
+  
   def financial_analyst(self):
     return Agent(
       role='The Best Financial Analyst',
