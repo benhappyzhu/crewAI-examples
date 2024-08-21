@@ -7,6 +7,21 @@ from tools.sec_tools import SECTools
 
 from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
 
+from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
+
+ClaudeHaiku = ChatAnthropic(
+    model="claude-3-haiku-20240307"
+)
+
+ClaudeSonnet = ChatAnthropic(
+    model="claude-3-sonnet-20240229"
+)
+
+ClaudeOpus = ChatAnthropic(
+    model="claude-3-opus-20240229"
+)
+
 class StockAnalysisAgents():
   
   def financial_analyst(self):
@@ -18,6 +33,7 @@ class StockAnalysisAgents():
       lots of expertise in stock market analysis and investment
       strategies that is working for a super important customer.""",
       verbose=True,
+      llm=ClaudeHaiku,
       tools=[
         BrowserTools.scrape_and_summarize_website,
         SearchTools.search_internet,
@@ -37,6 +53,7 @@ class StockAnalysisAgents():
       and market sentiments. Now you're working on a super 
       important customer""",
       verbose=True,
+      llm=ClaudeHaiku,
       tools=[
         BrowserTools.scrape_and_summarize_website,
         SearchTools.search_internet,
@@ -57,6 +74,7 @@ class StockAnalysisAgents():
       strategic investment advice. You are now working for
       a super important customer you need to impress.""",
       verbose=True,
+      llm=ClaudeHaiku,
       tools=[
         BrowserTools.scrape_and_summarize_website,
         SearchTools.search_internet,
